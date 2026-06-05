@@ -1,16 +1,57 @@
-# React + Vite
+# Task Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚧 Work in Progress
 
-Currently, two official plugins are available:
+A frontend task management system built with React where administrators can assign tasks to employees and track their progress. Employees can view assigned tasks, accept them, and mark them as completed.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+* Admin Dashboard
+* Employee Dashboard
+* Task Creation and Assignment
+* Task Status Tracking
+* Accept and Complete Tasks
+* State Management with Redux Toolkit
+* Data Persistence using Local Storage
+* Responsive UI
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech Stack
 
-## Expanding the ESLint configuration
+* React.js
+* Redux
+* Redux Toolkit
+* React Router DOM
+* JavaScript
+* Tailwind CSS
+* Local Storage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## User Roles
+
+### Admin
+
+* Create tasks
+* Assign tasks to employees
+* View task status
+* Monitor employee progress
+
+### Employee
+
+* View assigned tasks
+* Accept tasks
+* Complete tasks
+* Track task progress
+
+## Installation
+
+```bash
+npm install
+npm run dev
+```
+
+## Project Status
+
+This project is currently under development. Backend integration and additional features will be added in future updates.
+
+## Author
+
+Gaurav Singh Rawat
