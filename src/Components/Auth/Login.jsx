@@ -1,42 +1,85 @@
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
+import { useSelector } from 'react-redux'
+import { Navigate, useNavigate, useSearchParams } from 'react-router-dom'
+import { loginUser } from '../../utils/SessionStorage'
 
 function Login() {
+    const userData = useSelector(store => store.employees)
+
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const navigate = useNavigate()
+    const [loading, setLoading] = useState(false);
 
     const submitHandler = (e) => {
         e.preventDefault()
-        console.log("login form submit")
-        
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false);
+
+        }, 1000);
+
+        const foundUser = userData.find(item => item.email === email && password === "123")
+
+
+        if (foundUser) {
+            loginUser(foundUser)
+
+            navigate(`/employee/${foundUser.id}`)
+            toast.success("Login Successful")
+        }
+        else if (email === "admin@example.com" && password === "123") {
+            loginUser({ name: "Admin", email: "admin@example.com", role: "Admin" })
+            navigate("/admin")
+            toast.success("Login Successful")
+        }
+        else {
+            toast.error("Wrong Credentials")
+        }
+
         setEmail("")
         setPassword("")
 
     }
     return (
-        <div className=' w-screen h-screen flex justify-center items-center bg-black'>
-            <div className='border-2 border-emerald-600 p-15'>
-                <form
-                    onSubmit={(e) => {
-                        submitHandler(e)
-                    }}
-                    action="" className='flex flex-col gap-4'>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 px-4">
+            <div className="w-full max-w-md bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl p-8">
+                <h1 className="text-3xl font-bold text-center mb-2">
+                    Task Management
+                </h1>
+                <p className="text-center text-slate-400 mb-8">
+                    Login to continue
+                </p>
+
+                <form onSubmit={submitHandler} className="flex flex-col gap-5">
                     <input
-                        onChange={(e) => {
-                            setEmail(e.target.value)
-                        }}
                         value={email}
-                        required className='p-2 bg-tranparent text-white border-2 border-emerald-600 rounded-2xl placeholder:text-gray-00' type="email" placeholder='Enter email' />
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="px-4 py-3 bg-slate-800 border border-slate-600 rounded-xl outline-none focus:border-emerald-400"
+                        type="email"
+                        placeholder="Enter email"
+                    />
+
                     <input
-                        onChange={(e) => {
-                            setPassword(e.target.value)
-                        }}
                         value={password}
-                        required className='p-2 bg-tranparent text-white border-2 border-emerald-600 rounded-2xl placeholder:text-gray-00' type="password" placeholder='Enter password' />
-                    <button className='p-3 w-fit h-fit border-2 border-white text-white rounded-full bg-emerald-600 mx-auto'>Login</button>
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        className="px-4 py-3 bg-slate-800 border border-slate-600 rounded-xl outline-none focus:border-emerald-400"
+                        type="password"
+                        placeholder="Enter password"
+                    />
+
+                    <button
+                        disabled={loading}
+                        className="bg-emerald-500 hover:bg-emerald-600 disabled:opacity-60 py-3 rounded-xl font-semibold transition"
+                    >
+                        {loading ? "Logging in..." : "Login"}
+                    </button>
                 </form>
             </div>
-
         </div>
     )
 }

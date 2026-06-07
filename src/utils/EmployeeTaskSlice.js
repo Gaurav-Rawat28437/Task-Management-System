@@ -24,9 +24,26 @@ const employeeTaskSlice = createSlice({
                 });
             }
 
+        },
+        changeTaskStatus:(state,action)=>{
+             const {employeeId,taskId,status}=action.payload
+
+             const employee = state.tasks.find(item => item.employeeId == employeeId)
+
+             if(employee)
+             {
+                const task = employee.taskDetail.find((task) => task.taskId == taskId)
+
+                if(task)
+                {
+                    task.status=status
+                }
+             }
+
         }
     }
+
 })
 
 export default employeeTaskSlice.reducer
-export const { createTask } = employeeTaskSlice.actions
+export const { createTask,changeTaskStatus } = employeeTaskSlice.actions
