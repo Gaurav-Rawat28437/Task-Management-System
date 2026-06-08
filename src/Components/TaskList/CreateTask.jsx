@@ -6,7 +6,7 @@ import toast from "react-hot-toast"
 const CreateTask = () => {
     const [taskTitle, setTaskTitle] = useState("")
     const [taskDescription, setTaskDescription] = useState("")
-    const [taskDate, setTaskDate] = useState("")
+    const [taskDueDate, setTaskDueDate] = useState("")
     const [category, setCategory] = useState("")
 
     const [search, setSearch] = useState("")
@@ -31,7 +31,8 @@ const CreateTask = () => {
                 taskId: Date.now(),
                 taskTitle,
                 taskDescription,
-                taskDate,
+                taskAssignDate:new Date().toISOString().split("T")[0],
+                taskDueDate,
                 category,
                 status: "New",
             },
@@ -42,7 +43,7 @@ const CreateTask = () => {
 
         setTaskTitle("")
         setCategory("")
-        setTaskDate("")
+        setTaskDueDate("")
         setTaskDescription("")
         setEmployeeID("")
         setSearch("")
@@ -70,7 +71,7 @@ const CreateTask = () => {
                 onSubmit={submitHandler}
                 className="grid grid-cols-1 lg:grid-cols-2 gap-8"
             >
-                <div className="space-y-5">
+                <div className="flex flex-col gap-5">
                     <div>
                         <label className="block text-sm text-slate-300 mb-2">
                             Task Title
@@ -87,13 +88,13 @@ const CreateTask = () => {
 
                     <div>
                         <label className="block text-sm text-slate-300 mb-2">
-                            Date
+                            Due Date
                         </label>
                         <input
                             required
-                            value={taskDate}
-                            onChange={(e) => setTaskDate(e.target.value)}
-                            className="w-full px-4 py-3 rounded-xl border border-slate-600 bg-slate-800 text-white outline-none focus:border-emerald-400"
+                            value={taskDueDate}
+                            onChange={(e) => setTaskDueDate(e.target.value)}
+                            className="w-full px-4 py-3 rounded-xl border border-slate-600 bg-slate-800 text-white outline-none cursor-text focus:border-emerald-400 [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                             type="date"
                         />
                     </div>

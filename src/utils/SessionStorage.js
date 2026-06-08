@@ -3,5 +3,5 @@ export const loginUser=(foundUser)=>{
 }
 
 export const removeLoginUser=(loginUser)=>{
-    sessionStorage.removeItem(loginUssession)
+    sessionStorage.removeItem(loginUser)
 }

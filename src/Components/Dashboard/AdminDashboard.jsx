@@ -8,7 +8,6 @@ import Loader from './Other/Loader'
 const AdminDashboard = () => {
 
     const loginUserName = JSON.parse(sessionStorage.getItem("loginUser")).name
-    console.log(loginUserName)
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

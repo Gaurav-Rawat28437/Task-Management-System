@@ -9,6 +9,7 @@ import ProtectedRoute from './Context/ProtectedRoute'
 import FilteredTasks from './Components/TaskList/FilteredTasks'
 import TaskDetail from './Components/TaskList/TaskDetail'
 
+
 function App() {
   return (
     <div className='bg-black text-white p-0 m-0'>

@@ -19,7 +19,7 @@ function Header({ name }) {
           removeLoginUser("loginUser");
           navigate("/login");
         }}
-        className="bg-red-500 hover:bg-red-600 px-5 py-2 rounded-xl font-medium transition"
+        className="bg-red-500 hover:bg-red-600 px-5 py-2 rounded-xl font-medium transition cursor-pointer"
       >
         Logout
       </button>

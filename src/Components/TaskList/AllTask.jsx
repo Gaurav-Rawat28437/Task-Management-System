@@ -1,10 +1,13 @@
 import React from "react"
 import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 
 function AllTask() {
     const taskAssignedEmployees = useSelector(
         (store) => store.employeeTask.tasks
     )
+
+    const navigate=useNavigate()
 
     return (
         <div className="bg-slate-900 border border-slate-700 p-6 rounded-3xl mt-8 text-white shadow-xl">
@@ -40,16 +43,22 @@ function AllTask() {
                                     </span>
                                 </div>
 
-                                <div className="hidden md:grid grid-cols-3 gap-4 text-slate-400 text-sm font-medium border-b border-slate-700 pb-2 mb-3">
+                                <div className="hidden md:grid grid-cols-4 gap-10  text-slate-400 text-sm font-medium border-b border-slate-700 pb-2 mb-3">
                                     <p>Task</p>
                                     <p>Status</p>
-                                    <p>Date</p>
+                                    <p>Assign Date</p>
+                                    <p>Due Date</p>
                                 </div>
 
                                 {employee.taskDetail.map((task) => (
                                     <div
+                                        onClick={()=>{
+                                            const employeeId=employee.employeeId
+                                            const taskId=task.taskId
+                                            navigate(`/task/${employeeId}/${taskId}`)
+                                        }}
                                         key={task.taskId}
-                                        className="grid md:grid-cols-3 gap-4 items-center py-3 border-b border-slate-700 last:border-none"
+                                        className="cursor-pointer grid md:grid-cols-4 gap-10 items-center py-3 border-b border-slate-700 last:border-none"
                                     >
                                         <p className="font-medium">
                                             {task.taskTitle}
@@ -74,7 +83,11 @@ function AllTask() {
                                         </p>
 
                                         <p className="text-slate-400">
-                                            {task.taskDate}
+                                            {task.taskAssignDate}
+                                        </p>
+
+                                        <p className="text-slate-400">
+                                            {task.taskDueDate}
                                         </p>
                                     </div>
                                 ))}
