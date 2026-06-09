@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createTask } from "../../utils/EmployeeTaskSlice"
 import toast from "react-hot-toast"
+import SearchAccordionInput from "./SearchAccordionInput"
 
 const CreateTask = () => {
     const [taskTitle, setTaskTitle] = useState("")
@@ -104,49 +105,7 @@ const CreateTask = () => {
                             Assign To
                         </label>
 
-                        <div className="relative">
-                            <input
-                                required
-                                type="text"
-                                value={search}
-                                placeholder="Search employee"
-                                onClick={(e) => {
-                                    e.stopPropagation()
-                                    setOpen(true)
-                                }}
-                                onChange={(e) => {
-                                    setSearch(e.target.value)
-                                    setOpen(true)
-                                }}
-                                className="w-full px-4 py-3 rounded-xl border border-slate-600 bg-slate-800 text-white outline-none focus:border-emerald-400"
-                            />
-
-                            {open && (
-                                <div className="absolute z-20 mt-2 w-full bg-slate-800 border border-slate-600 rounded-xl max-h-48 overflow-y-auto shadow-xl">
-                                    {filteredEmployees.length > 0 ? (
-                                        filteredEmployees.map((emp) => (
-                                            <div
-                                                key={emp.id}
-                                                onClick={(e) => {
-                                                    e.stopPropagation()
-                                                    setSearch(emp.name)
-                                                    setEmployeeID(emp.id)
-                                                    setOpen(false)
-                                                }}
-                                                className="px-4 py-3 cursor-pointer hover:bg-slate-700 transition"
-                                            >
-                                                <p className="font-medium">{emp.name}</p>
-                                                <p className="text-xs text-slate-400">{emp.email}</p>
-                                            </div>
-                                        ))
-                                    ) : (
-                                        <p className="px-4 py-3 text-slate-400">
-                                            No employee found
-                                        </p>
-                                    )}
-                                </div>
-                            )}
-                        </div>
+                        <SearchAccordionInput data={{ search, open, setOpen, setSearch, setEmployeeID, filteredEmployees,}}/>
                     </div>
 
                     <div>

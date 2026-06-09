@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
 import { useSelector } from 'react-redux'
-import { Navigate, useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import { loginUser } from '../../utils/SessionStorage'
 
 function Login() {
@@ -44,7 +44,21 @@ function Login() {
 
     }
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 px-4">
+
+
+
+
+        <div className="min-h-screen flex items-center gap-20 justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950 px-4">
+            <div>
+                <h1 className="text-5xl font-bold text-white">
+                    TaskFlow
+                </h1>
+
+                <p className="text-slate-400 mt-4">
+                    Manage employee tasks and monitor progress.
+                </p>
+            </div> 
+            
             <div className="w-full max-w-md bg-slate-900 border border-slate-700 rounded-3xl shadow-2xl p-8">
                 <h1 className="text-3xl font-bold text-center mb-2">
                     Task Management

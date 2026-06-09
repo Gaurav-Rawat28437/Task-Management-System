@@ -1,217 +1,111 @@
-# 🚀 Task Management System
+# 📋 TaskFlow - Task Management System
 
-A modern Task Management System built with React, Redux Toolkit, React Router, and Tailwind CSS.
+🔗 **Live Demo:** https://task-management-system-amber-one.vercel.app/
 
-This application allows administrators to assign tasks to employees and track their progress while employees can manage their assigned tasks through an intuitive dashboard.
+## Overview
 
----
+TaskFlow is a modern task management system built with React, Redux Toolkit, Tailwind CSS, and React Router. It helps administrators assign tasks to employees and allows employees to manage and track their assigned work efficiently.
 
-## 📌 Features
+## Features
 
-### Authentication
+### Admin Panel
 
 * Admin Login
+* Create and assign tasks
+* View all assigned tasks
+* Monitor task status:
+
+  * Pending
+  * In Progress
+  * Completed
+  * Failed
+* Filter tasks by status
+* Search tasks by employee name
+* View task details
+* Profile management
+
+### Employee Panel
+
 * Employee Login
-* Role-Based Access Control
+* View assigned tasks
+* Accept tasks
+* Mark tasks as completed
+* Mark tasks as failed
+* Filter tasks by status
+* View task details
+* Profile page
+
+### General Features
+
 * Protected Routes
-* Logout Functionality
+* Redux State Management
+* Local Storage Persistence
+* Responsive UI
+* Reusable Components
+* Sidebar Navigation
+* Task Statistics Dashboard
+* Loading Screen
+* Toast Notifications
 
-### Admin Dashboard
-
-* Create New Tasks
-* Assign Tasks to Employees
-* View All Assigned Tasks
-* Track Employee Progress
-* Monitor Task Status
-
-### Employee Dashboard
-
-* View Assigned Tasks
-* Accept Tasks
-* Complete Tasks
-* Mark Tasks as Failed
-* View Task Details
-* Filter Tasks by Status
-
-### Task Management
-
-* Create Tasks
-* Update Task Status
-* View Task Details
-* Due Date Tracking
-* Task Categories
-* Assignment Date Tracking
-
----
-
-## 📊 Task Workflow
-
-```text
-New
- ↓
-Accepted
- ↙      ↘
-Failed  Completed
-```
-
-### Admin View
-
-```text
-New       → Pending
-Accepted  → In Progress
-Completed → Completed
-Failed    → Failed
-```
-
----
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
 * React.js
-* Vite
-* JavaScript (ES6+)
+* Redux Toolkit
+* React Router DOM
+* Tailwind CSS
+* React Hot Toast
 
 ### State Management
 
 * Redux Toolkit
-* React Redux
-
-### Routing
-
-* React Router DOM
-
-### Styling
-
-* Tailwind CSS
-
-### Notifications
-
-* React Hot Toast
 
 ### Storage
 
 * Local Storage
 * Session Storage
 
-### Development Tools
-
-* Git
-* GitHub
-* VS Code
-
----
-
-## 📁 Folder Structure
+## Project Structure
 
 ```bash
-src
+src/
 │
-├── Components
-│   ├── Auth
-│   │   └── Login.jsx
-│   │
-│   ├── Dashboard
-│   │   ├── AdminDashboard.jsx
-│   │   ├── EmployeeDashboard.jsx
-│   │   └── Other
-│   │       ├── Header.jsx
-│   │       ├── Loader.jsx
-│   │       └── TaskListNumbers.jsx
-│   │
-│   ├── TaskList
-│   │   ├── CreateTask.jsx
-│   │   ├── AllTask.jsx
-│   │   ├── Task.jsx
-│   │   ├── TaskList.jsx
-│   │   ├── FilteredTasks.jsx
-│   │   └── TaskDetail.jsx
+├── Components/
+│   ├── Auth/
+│   ├── Dashboard/
+│   ├── TaskList/
 │
-├── Context
-│   └── ProtectedRoute.jsx
+├── Context/
 │
-├── Utils
-│   ├── Store.js
+├── Utils/
 │   ├── Employee.js
 │   ├── EmployeeTaskSlice.js
-│   └── LocalStorage.js
+│   ├── LocalStorage.js
+│   ├── SessionStorage.js
+│   └── Store.js
 │
 ├── App.jsx
 └── main.jsx
 ```
 
----
+## Demo Credentials
 
-## 🔒 Route Protection
-
-### Admin Routes
+### Admin
 
 ```text
-/admin
+Email: admin@example.com
+Password: 123
 ```
 
-### Employee Routes
+### Employee
 
 ```text
-/employee/:id
-/employee/:id/:status
-/task/:employeeId/:taskId
+Email: ram@example.com
+Password: 123
 ```
 
----
-
-## 💾 Data Persistence
-
-The application uses Redux Toolkit and Local Storage to persist data.
-
-```javascript
-localStorage.setItem("reduxState", state);
-```
-
-This ensures task data remains available after page refresh.
-
----
-
-## 🎨 UI Features
-
-* Modern Dark Theme
-* Responsive Design
-* Dashboard Cards
-* Task Status Badges
-* Loading Spinner
-* Toast Notifications
-* Hover Animations
-* Mobile Friendly Layout
-
----
-
-## 📈 Future Improvements
-
-* Backend Integration (Node.js + Express)
-* MongoDB Database
-* JWT Authentication
-* Employee Registration
-* Search & Filtering
-* Task Priority Levels
-* File Upload Support
-* Analytics Dashboard
-* Email Notifications
-
----
-
-## ⚠️ Important Note
-
-This is a frontend-only project.
-
-* No backend server is currently used.
-* Data is stored in the browser.
-* Authentication is simulated.
-* Data is available only on the user's device.
-
----
-
-## ⚙️ Installation
+## Installation
 
 Clone the repository:
 
@@ -219,7 +113,7 @@ Clone the repository:
 git clone https://github.com/Gaurav-Rawat28437/Task-Management-System.git
 ```
 
-Move into the project directory:
+Move into the project:
 
 ```bash
 cd Task-Management-System
@@ -237,24 +131,26 @@ Run development server:
 npm run dev
 ```
 
-Build for production:
+## Future Improvements
 
-```bash
-npm run build
-```
+* Backend Integration
+* JWT Authentication
+* User Registration
+* Employee Management
+* Dark/Light Theme
+* Task Comments
+* Task Priority Levels
+* Email Notifications
+* Analytics Dashboard
 
----
-
-## 👨‍💻 Author
+## Author
 
 **Gaurav Singh Rawat**
 
-* BCA Student
-* React Developer
-* MERN Stack Learner
+BCA Student | MERN Stack Developer
+
+GitHub: https://github.com/Gaurav-Rawat28437
 
 ---
 
-## ⭐ Support
-
-If you like this project, please give it a star on GitHub.
+⭐ If you like this project, consider giving it a star on GitHub.

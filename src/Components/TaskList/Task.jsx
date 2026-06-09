@@ -54,7 +54,7 @@ function Task({ item, employeeId }) {
 
       <div className="mt-5 flex items-center justify-between text-sm text-slate-400">
         <p>{item.category}</p>
-        <p>{item.taskDate}</p>
+        <p>{item.taskDueDate}</p>
       </div>
 
       <div className="flex gap-3 mt-6">

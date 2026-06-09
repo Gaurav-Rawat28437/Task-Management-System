@@ -1,30 +1,47 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom';
-import { removeLoginUser } from '../../../utils/SessionStorage';
+import React from "react";
 
-function Header({ name }) {
-  const navigate = useNavigate()
+function Header({ name,role }) {
+  const today = new Date().toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
   return (
-    <div className="flex items-center justify-between bg-slate-900 border border-slate-700 px-6 py-5 rounded-2xl shadow-lg">
+    <header className="flex items-center justify-between bg-slate-900 border border-slate-700 rounded-2xl p-5 shadow-lg">
+      
       <div>
-        <p className="text-slate-400 text-sm">Welcome back 👋</p>
-        <h1 className="text-3xl font-bold text-emerald-400">
-          {name}
+        <h1 className="text-3xl font-bold text-white">
+          Welcome Back,{" "}
+          <span className="text-emerald-400">
+            {name}
+          </span>
         </h1>
+
+        {role==="Admin"?
+         (<p className="text-slate-400 mt-1">
+          Manage tasks and track progress efficiently.
+        </p>
+        ):(
+          <p className="text-slate-400 mt-2">
+          Manage your assigned tasks and track your progress.
+        </p>
+        ) }
+        
       </div>
 
-      <button
-        onClick={() => {
-          removeLoginUser("loginUser");
-          navigate("/login");
-        }}
-        className="bg-red-500 hover:bg-red-600 px-5 py-2 rounded-xl font-medium transition cursor-pointer"
-      >
-        Logout
-      </button>
-    </div>
-  )
+      <div className="text-right">
+        <p className="text-slate-400 text-sm">
+          Today's Date
+        </p>
+
+        <h3 className="text-lg font-semibold text-white">
+          {today}
+        </h3>
+      </div>
+
+    </header>
+  );
 }
 
-export default Header
+export default Header;

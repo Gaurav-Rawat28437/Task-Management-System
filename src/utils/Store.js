@@ -13,7 +13,7 @@ const store=configureStore({
 
 store.subscribe(()=>{
     console.log("Saving...");
-    console.log(store.getState());
+    
     saveState(store.getState())
 })
 
