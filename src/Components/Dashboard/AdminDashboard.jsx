@@ -12,7 +12,11 @@ const AdminDashboard = () => {
   const loginUser = JSON.parse(sessionStorage.getItem("loginUser"))
 
   const [loading, setLoading] = useState(true)
-  const [activePage, setActivePage] = useState("dashboard")
+  const [activePage, setActivePage] = useState(sessionStorage.getItem("activePage") || "dashboard")
+
+  useEffect(() => {
+  sessionStorage.setItem("activePage", activePage);
+  },[activePage])
  
   const navigate=useNavigate()
 
