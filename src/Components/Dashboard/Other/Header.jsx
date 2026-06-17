@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header({ name,role }) {
+function Header({ name, role }) {
   const today = new Date().toLocaleDateString("en-IN", {
     day: "numeric",
     month: "long",
@@ -8,38 +8,32 @@ function Header({ name,role }) {
   });
 
   return (
-    <header className="flex items-center justify-between bg-slate-900 border border-slate-700 rounded-2xl p-5 shadow-lg">
-      
+    <header className="bg-white border border-slate-200 rounded-xl px-6 py-5 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div>
-        <h1 className="text-3xl font-bold text-white">
+        <h1 className="text-2xl md:text-3xl font-bold text-slate-800">
           Welcome Back,{" "}
-          <span className="text-emerald-400">
+          <span className="text-[#0D0B61]">
             {name}
           </span>
         </h1>
 
-        {role==="Admin"?
-         (<p className="text-slate-400 mt-1">
-          Manage tasks and track progress efficiently.
-        </p>
-        ):(
-          <p className="text-slate-400 mt-2">
-          Manage your assigned tasks and track your progress.
-        </p>
-        ) }
-        
+        {role === "Admin" ? (
+          <p className="text-slate-500 mt-1">
+            Manage tasks and track progress efficiently.
+          </p>
+        ) : (
+          <p className="text-slate-500 mt-1">
+            Manage your assigned tasks and track your progress.
+          </p>
+        )}
       </div>
 
-      <div className="text-right">
-        <p className="text-slate-400 text-sm">
-          Today's Date
-        </p>
-
-        <h3 className="text-lg font-semibold text-white">
+      <div className="bg-[#F5F6FA] border border-slate-200 rounded-xl px-5 py-3">
+        <p className="text-slate-400 text-sm">Today&apos;s Date</p>
+        <h3 className="text-base font-semibold text-slate-800">
           {today}
         </h3>
       </div>
-
     </header>
   );
 }

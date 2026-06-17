@@ -2,55 +2,89 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function TaskListNumbers({ id, tasks }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const newTasks = tasks.filter(
-    (task) => task.status === "New"
-  ).length
+  const newTasks = tasks.filter((task) => task.status === "New").length;
+  const acceptedTasks = tasks.filter((task) => task.status === "Accepted").length;
+  const completedTasks = tasks.filter((task) => task.status === "Completed").length;
+  const failedTasks = tasks.filter((task) => task.status === "Failed").length;
 
-  const acceptedTasks = tasks.filter(
-    (task) => task.status === "Accepted"
-  ).length
-
-  const completedTasks = tasks.filter(
-    (task) => task.status === "Completed"
-  ).length
-
-  const failedTasks = tasks.filter(
-    (task) => task.status === "Failed"
-  ).length
+  const cards = [
+    {
+      title: "New Tasks",
+      count: newTasks,
+      status: "New",
+      bg: "bg-blue-50",
+      text: "text-blue-600",
+      dot: "bg-blue-500",
+      desc: "Tasks waiting for action",
+    },
+    {
+      title: "In Progress",
+      count: acceptedTasks,
+      status: "Accepted",
+      bg: "bg-yellow-50",
+      text: "text-yellow-700",
+      dot: "bg-yellow-500",
+      desc: "Tasks currently active",
+    },
+    {
+      title: "Completed",
+      count: completedTasks,
+      status: "Completed",
+      bg: "bg-green-50",
+      text: "text-green-600",
+      dot: "bg-green-500",
+      desc: "Tasks finished successfully",
+    },
+    {
+      title: "Failed",
+      count: failedTasks,
+      status: "Failed",
+      bg: "bg-red-50",
+      text: "text-red-600",
+      dot: "bg-red-500",
+      desc: "Tasks marked as failed",
+    },
+  ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
-      <div 
-        onClick={() => navigate(`/employee/${id}/New`)} 
-        className="rounded-2xl p-6 bg-cyan-500 cursor-pointer hover:scale-105 transition shadow-lg">
-        <h2 className="text-3xl font-bold">{newTasks}</h2>
-        <h3 className="text-xl mt-1">New Tasks 📥</h3>
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mt-8">
+      {cards.map((card) => (
+        <div
+          key={card.status}
+          onClick={() => navigate(`/employee/${id}/${card.status}`)}
+          className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm cursor-pointer hover:-translate-y-1 hover:shadow-md transition"
+        >
+          <div className="flex items-center justify-between mb-5">
+            <div
+              className={`w-12 h-12 rounded-xl ${card.bg} flex items-center justify-center`}
+            >
+              <span className={`w-3 h-3 rounded-full ${card.dot}`}></span>
+            </div>
 
-      <div 
-        onClick={() => navigate(`/employee/${id}/Completed`)} 
-        className="rounded-2xl p-6 bg-green-500 cursor-pointer hover:scale-105 transition shadow-lg">
-        <h2 className="text-3xl font-bold">{completedTasks}</h2>
-        <h3 className="text-xl mt-1">Completed ⏳</h3>
-      </div>
+            <span
+              className={`px-3 py-1 rounded-full text-xs font-bold ${card.bg} ${card.text}`}
+            >
+              View
+            </span>
+          </div>
 
-      <div 
-        onClick={() => navigate(`/employee/${id}/Accepted`)} 
-        className="rounded-2xl p-6 bg-yellow-500 cursor-pointer hover:scale-105 transition shadow-lg">
-        <h2 className="text-3xl font-bold">{acceptedTasks}</h2>
-        <h3 className="text-xl mt-1">Accepted ✅</h3>
-      </div>
+          <h2 className="text-3xl font-extrabold text-slate-900">
+            {card.count}
+          </h2>
 
-      <div 
-        onClick={() => navigate(`/employee/${id}/Failed`)} 
-        className="rounded-2xl p-6 bg-red-500 cursor-pointer hover:scale-105 transition shadow-lg">
-        <h2 className="text-3xl font-bold">{failedTasks}</h2>
-        <h3 className="text-xl mt-1">Failed ❌</h3>
-      </div>
+          <p className="text-base font-bold text-slate-800 mt-2">
+            {card.title}
+          </p>
+
+          <p className="text-sm text-slate-500 mt-1">
+            {card.desc}
+          </p>
+        </div>
+      ))}
     </div>
-  )
+  );
 }
 
 export default TaskListNumbers;
