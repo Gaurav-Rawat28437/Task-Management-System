@@ -95,7 +95,7 @@ function TaskDetail() {
     <div className="min-h-screen bg-[#F5F6FA] text-slate-800 flex">
       <Sidebar setActivePage={setActivePage} role={loginUser?.role} />
 
-      <main className="flex-1 h-screen overflow-y-auto p-4 md:p-10">
+      <main className="flex-1 h-screen overflow-y-auto p-4 pt-20 md:p-8">
         <div className="max-w-4xl mx-auto">
           {/* Top Bar */}
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">

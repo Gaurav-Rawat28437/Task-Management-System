@@ -82,7 +82,7 @@ function FilterAllEmployeeTasks() {
 
       <main
         onClick={() => setOpen(false)}
-        className="flex-1 h-screen overflow-y-auto p-4 md:p-8"
+        className="flex-1 h-screen overflow-y-auto p-4 pt-20 md:p-8"
       >
         {/* Top Section */}
         <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm mb-6">

@@ -83,7 +83,7 @@ const AdminDashboard = () => {
     <div className="h-screen bg-[#F5F6FA] text-slate-800 flex overflow-hidden">
       <Sidebar role={loginUser?.role} setActivePage={setActivePage} />
 
-      <main className="flex-1 h-screen overflow-y-auto p-4 md:p-8">
+      <main className="flex-1 h-screen overflow-y-auto p-4 pt-20 md:p-8">
         <Header name={loginUser?.name} role={loginUser?.role} />
 
         {activePage === "dashboard" && (
@@ -107,7 +107,7 @@ const AdminDashboard = () => {
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                 {cards.map((card) => (
                   <div
                     key={card.status}

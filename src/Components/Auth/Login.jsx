@@ -56,19 +56,20 @@ function Login() {
 
   return (
     <div
+      className="login-page"
       style={{
-        height: "100dvh",
+        minHeight: "100dvh",
         backgroundColor: "#F5F6FA",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         padding: "20px",
-        overflow: "hidden",
         boxSizing: "border-box",
         fontFamily: "Arial, sans-serif",
       }}
     >
       <div
+        className="login-layout"
         style={{
           width: "100%",
           maxWidth: "1050px",
@@ -85,6 +86,7 @@ function Login() {
       >
         {/* Left Side */}
         <div
+          className="login-left"
           style={{
             padding: "34px 60px",
             backgroundColor: "#FFFFFF",
@@ -99,8 +101,7 @@ function Login() {
               color: "#0D0B61",
             }}
           >
-            Task
-            <span style={{ color: "#478B8D" }}>Flow</span>
+            Task<span style={{ color: "#478B8D" }}>Flow</span>
           </div>
 
           <div
@@ -140,6 +141,7 @@ function Login() {
               </div>
 
               <h1
+                className="login-title"
                 style={{
                   fontSize: "34px",
                   color: "#1F2937",
@@ -161,12 +163,7 @@ function Login() {
               </p>
 
               <form onSubmit={submitHandler}>
-                <div
-                  style={{
-                    marginBottom: "17px",
-                    textAlign: "left",
-                  }}
-                >
+                <div style={{ marginBottom: "17px", textAlign: "left" }}>
                   <label
                     style={{
                       display: "block",
@@ -199,12 +196,7 @@ function Login() {
                   />
                 </div>
 
-                <div
-                  style={{
-                    marginBottom: "17px",
-                    textAlign: "left",
-                  }}
-                >
+                <div style={{ marginBottom: "17px", textAlign: "left" }}>
                   <div
                     style={{
                       display: "flex",
@@ -303,6 +295,7 @@ function Login() {
 
         {/* Right Side */}
         <div
+          className="login-right"
           style={{
             position: "relative",
             backgroundColor: "#0D0B61",
@@ -338,12 +331,7 @@ function Login() {
             }}
           ></div>
 
-          <div
-            style={{
-              position: "relative",
-              zIndex: 2,
-            }}
-          >
+          <div style={{ position: "relative", zIndex: 2 }}>
             <span
               style={{
                 display: "inline-block",
@@ -389,31 +377,33 @@ function Login() {
                 gap: "16px",
               }}
             >
-              {["Assign employee tasks", "Track task progress", "Manage daily workflow"].map(
-                (text, index) => (
-                  <div
-                    key={index}
+              {[
+                "Assign employee tasks",
+                "Track task progress",
+                "Manage daily workflow",
+              ].map((text, index) => (
+                <div
+                  key={index}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "12px",
+                    color: "rgba(255,255,255,0.88)",
+                    fontSize: "14px",
+                  }}
+                >
+                  <span
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "12px",
-                      color: "rgba(255,255,255,0.88)",
-                      fontSize: "14px",
+                      width: "9px",
+                      height: "9px",
+                      borderRadius: "50%",
+                      backgroundColor: "#E4D329",
+                      flexShrink: 0,
                     }}
-                  >
-                    <span
-                      style={{
-                        width: "9px",
-                        height: "9px",
-                        borderRadius: "50%",
-                        backgroundColor: "#E4D329",
-                        flexShrink: 0,
-                      }}
-                    ></span>
-                    {text}
-                  </div>
-                )
-              )}
+                  ></span>
+                  {text}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -426,8 +416,12 @@ function Login() {
           #root {
             margin: 0;
             width: 100%;
-            height: 100%;
-            overflow: hidden;
+            min-height: 100%;
+          }
+
+          input:focus {
+            border-color: #0D0B61 !important;
+            box-shadow: 0 0 0 3px rgba(13, 11, 97, 0.08);
           }
 
           @keyframes pageFromBottom {
@@ -455,6 +449,39 @@ function Login() {
           @keyframes spin {
             to {
               transform: rotate(360deg);
+            }
+          }
+
+          @media (max-width: 850px) {
+            .login-page {
+              align-items: flex-start !important;
+              padding: 18px !important;
+              overflow-y: auto !important;
+            }
+
+            .login-layout {
+              grid-template-columns: 1fr !important;
+              height: auto !important;
+              min-height: calc(100dvh - 36px) !important;
+            }
+
+            .login-right {
+              display: none !important;
+            }
+
+            .login-left {
+              padding: 30px 24px !important;
+              min-height: calc(100dvh - 36px) !important;
+            }
+          }
+
+          @media (max-width: 520px) {
+            .login-left {
+              padding: 26px 20px !important;
+            }
+
+            .login-title {
+              font-size: 30px !important;
             }
           }
         `}

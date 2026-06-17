@@ -40,7 +40,7 @@ function EmployeeDashboard() {
     <div className="h-screen bg-[#F5F6FA] text-slate-800 flex overflow-hidden">
       <Sidebar setActivePage={setActivePage} role={loginUser?.role} />
 
-      <main className="flex-1 h-screen overflow-y-auto p-4 md:p-8">
+      <main className="flex-1 h-screen overflow-y-auto p-4 pt-20 md:p-8">
         <Header name={loginUser?.name} role={loginUser?.role} />
 
         {activePage === "dashboard" && (
